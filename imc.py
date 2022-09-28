@@ -23,7 +23,7 @@ from pyquery import PyQuery
 #   --data-raw '_EventName=E%27CONSULTA+DE+DEUDA%27.&_EventGridId=20&_EventRowId=1&_IDPADRON=1&BUTTON1=Buscar&_SANIO_0001=&_VTO_0001=&_CODIGOCONCEPTO_0001=&_CONCEPTO_0001=SUBTOTAL&_CUOTA_0001=&_IMPORTE_0001=0.00&_LINEA_0001=0&_MENSAJERETORNO=Padr%C3%B3n+inexistente&_MONTOFINAL_0001=0%2C00&_AUXILIARCOBRO=0&_VALPAR=&_NUMEROPREFACTURA=0&_NROPARAMETRO=0&_TIPOBUSQUEDA=0&_CODIGORETORNO=001&_PADRON=&nRC_Grilladeuda=1&nRC_Grilladetalle=0&nRC_Grillapago=0&nRC_Grillatotal=1&sCallerURL=' \
 #   --compressed
 
-def getDebt(id):
+def get_debt(id):
   cookies = {
       'GX_SESSION_ID': 'yc3pgQrDDoqd0skF0%2B8F%2FrvpZZ4cKCYBwIQom7rRGrM%3D',
       'JSESSIONID': '5D3F3E6F9D29ED953451CECBE1474BF5',

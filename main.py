@@ -1,54 +1,58 @@
 import time
-import gspread
+# import gspread
 import pandas as pd
-from pyquery import PyQuery
-from oauth2client.service_account import ServiceAccountCredentials
-from imc import getDebt
+# from pyquery import PyQuery
+# from oauth2client.service_account import ServiceAccountCredentials
+from imc import get_debt
+from gspread_utils import get_spreadsheet
 
 gst = time.time()
 
-# defining the scope of the application
-scope_app = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
-st = time.time()
-print('==> Get service account credentials...')
-#credentials to the account
-cred = ServiceAccountCredentials.from_json_keyfile_name('keys.json', scope_app)
-et = time.time()
-elapsed_time = et - st
-print('<== Service account credentials ready in', elapsed_time, 'seconds!')
+# # defining the scope of the application
+# scope_app = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
-st = time.time()
-print('==> Get Google Spreadsheet client...')
-# authorize the clientsheet 
-client = gspread.authorize(cred)
-et = time.time()
-elapsed_time = et - st
-print('<== Google Spreadsheet client ready in', elapsed_time, 'seconds!')
+# st = time.time()
+# print('==> Get service account credentials...')
+# #credentials to the account
+# cred = ServiceAccountCredentials.from_json_keyfile_name('keys.json', scope_app)
+# et = time.time()
+# elapsed_time = et - st
+# print('<== Service account credentials ready in', elapsed_time, 'seconds!')
 
-st = time.time()
-print('==> Get spreadsheet "Terrenos la costa"...')
-# get the sample of the Spreadsheet
-sheet = client.open('Terrenos la costa')
-et = time.time()
-elapsed_time = et - st
-print('<== Spreadsheet "Terrenos la costa" ready in', elapsed_time, 'seconds!')
+# st = time.time()
+# print('==> Get Google Spreadsheet client...')
+# # authorize the clientsheet 
+# client = gspread.authorize(cred)
+# et = time.time()
+# elapsed_time = et - st
+# print('<== Google Spreadsheet client ready in', elapsed_time, 'seconds!')
 
-st = time.time()
-print('==> Get first worksheet...')
-# get the first sheet of the Spreadsheet
-sheet_instance = sheet.get_worksheet(0)
-et = time.time()
-elapsed_time = et - st
-print('<== Worksheet ready in', elapsed_time, 'seconds!')
+# st = time.time()
+# print('==> Get spreadsheet "Terrenos la costa"...')
+# # get the sample of the Spreadsheet
+# sheet = client.open('Terrenos la costa')
+# et = time.time()
+# elapsed_time = et - st
+# print('<== Spreadsheet "Terrenos la costa" ready in', elapsed_time, 'seconds!')
+
+# st = time.time()
+# print('==> Get first worksheet...')
+# # get the first sheet of the Spreadsheet
+# sheet_instance = sheet.get_worksheet(0)
+# et = time.time()
+# elapsed_time = et - st
+# print('<== Worksheet ready in', elapsed_time, 'seconds!')
 
 # print(inspect.getmembers(sheet_instance, predicate = inspect.ismethod))
 # print(*inspect.getmembers(sheet_instance, predicate = inspect.ismethod), sep = "\n")
 
+sheet = get_spreadsheet('Terrenos la costa')
+
 st = time.time()
 print('==> Get all sheet records...')
 # get all the records of the data
-records = sheet_instance.get_all_records()
+records = sheet.get_all_records()
 et = time.time()
 elapsed_time = et - st
 print('<== Sheet records ready in', elapsed_time, 'seconds!')
