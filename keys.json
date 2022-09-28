@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "land-mining-py-app",
+  "private_key_id": "b0f20f3f98ebf66965f12198dc195e56b545fee1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC3P12OZRzp4qPQ\n5CJ1as5L6l3LWnjgt7DVgckQDmvzM6hQ0+Fs7kHbWz6rjgbKr/7yfgTGhlNk9VVg\nMuXmN6tKsPibF+M4re87G8Dl/1j1hZj1443yX9IElEp2ncv29rlfhfkZokc9SOV/\ndC9o0NLARn+K0/wtST4+UZfNQDEAiqNcl0qIeuwGSV8D2/+GjgP5HStTXKi1U7Nb\nuiOoHG5vDgsrttZHLTZ65x60QfCLLPS5n2jBMqZvyvZXz0Ya6F9xPhZb2vi6ASWL\n/xws+0e6lI+o1EqYaBboPAqukx5/HZlyILG3vVf5d3PRklJCGQixdq4ORz8hMsQ7\nR8FdKctXAgMBAAECggEAOne605i6eXupVhi8T+eErB86zwvuXpDtmKoA66EWW3JD\nhYqdNgLtO16pJ9a4nwo5l8iSoH8yc5d9pqSGywY/HqVJpT6hbq+8kYkA6sGm8iuu\nyuHQpCFjordn7OHbNtCxA+P8v2uSPGEabKi3CcP7QoMb5cFOiGqCtCKXg1M0b13B\npktuJQOgSRWZpCSs/vJeS3Uyg2hLU42Si6Ftte2kjJGDUZ5WmB3pvrOZ1YH1zoPy\nQGc3GgQPkzX86C8t0xRLuaEshQQY2hpEHT6Ez+8007zRUfmJYpsHEuyHKILBUC2O\n1nOU8+H/AgPkMhOdEh6f0riqH26c8arxxBWlVrM/FQKBgQDzqbVnOZh/XQJPkcsP\n62NV7pDkQbQMqcOhIaVJNRhphwiA4BZhJWLR6Jc3KoEv3Q5+NUvM8i0MCxCOUmKI\nCpFJP7YRvU9Gxh6zMVhikINKp9erbUTq06qPn26QyzaoHhoUbeHqiMG7qlxbim6d\nzdGuzhYNlvY9fegVkF6QpEeUNQKBgQDAhpGxc1uvLEmg51c82YIKW+s50jajy/Be\n5m8QtFBNrJB+5uqzVNLyL+CAgjt7PXijmjE/41SZA0nBDcRgD8Nn7SUlAUNMwKEW\nLdXdXD5XQNX2ukw5kEaIpmih4/lwm3x6EL73R3skxYe+7N7f+Vd7RQmI1JiwS1LR\nf2OsQjI62wKBgQDxz7ceVRNZOmWDr81U5CZ17kbOr8HOW1+w9iIBL/clKwQuWbT7\n/c0/QdNnxP/mDzxF1gB+yMwZypVImMv99HbQubCnlDcrpoxrCwqK7p3NJhqrnsop\nPZxj4jYo7fM1DoKVSaNNTSDubBgyJIS4iLyR/SX3oJyI0/3SAK9IXjBHDQKBgArB\nObBM/mkpsy8+3Ru0FtSXT+uZ951szg+vFbM8L2Q3aJb+NUwxR9tpm0Pygnoe8/dH\nrMqh21701RDowPiQyNysXa/UgzrtY9JGWzUTaxQathkjTRDGI3qMuTmZ75w/w1Na\nTiCoKJPkSPH8b3LZje5/68lt/t2SR50WXa4IwJ+TAoGBAOfxr4Kve/1AZbjsXSi4\nMaRVmkKK2AogD1UT38yU45PYRsufpSm4atGNyBryHAa+NuvyAun1AMvkVmSPPSVq\nF7RankXukga7VPREtziaKfvu2MI7isDZjGKLHjehZd+TVo3Nbj2xxGgIlMWHsOs2\nDZqK1qSMVJjP1KCU8NGUMFxm\n-----END PRIVATE KEY-----\n",
+  "client_email": "land-mining-py-app@land-mining-py-app.iam.gserviceaccount.com",
+  "client_id": "118299072051918345567",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/land-mining-py-app%40land-mining-py-app.iam.gserviceaccount.com"
+}

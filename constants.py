@@ -1,0 +1,5 @@
+NOT_FOUND_MSG = 'Padrón inexistente'
+NO_DEBT_MSG = 'No posee deuda'
+NOT_FOUND = 'NOT_FOUND'
+NO_DEBT = 'NO_DEBT'
+IN_DEBT = 'IN_DEBT'
