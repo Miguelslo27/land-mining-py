@@ -5,32 +5,54 @@ from pyquery import PyQuery
 from oauth2client.service_account import ServiceAccountCredentials
 from imc import getDebt
 
+# get the start time
+st = time.time()
+
 # defining the scope of the application
 scope_app = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
+print('Get service account credentials...')
 #credentials to the account
 cred = ServiceAccountCredentials.from_json_keyfile_name('keys.json', scope_app)
+print('Service account credentials ready!')
 
+print('Get Google Spreadsheet client...')
 # authorize the clientsheet 
 client = gspread.authorize(cred)
+print('Google Spreadsheet client ready!')
 
+print('Get spreadsheet "Terrenos la costa"...')
 # get the sample of the Spreadsheet
 sheet = client.open('Terrenos la costa')
+print('Spreadsheet "Terrenos la costa" ready')
 
+print('Get first worksheet...')
 # get the first sheet of the Spreadsheet
 sheet_instance = sheet.get_worksheet(0)
+print('Worksheet ready!')
 
 # print(inspect.getmembers(sheet_instance, predicate = inspect.ismethod))
 # print(*inspect.getmembers(sheet_instance, predicate = inspect.ismethod), sep = "\n")
 
+print('Get all sheet records...')
 # get all the records of the data
 records = sheet_instance.get_all_records()
+print('Sheet records ready!')
 
 # view the data with no format
 # print(*records, sep="\n")
 
+print('Convert records to data frame...')
  # convert the json to dataframe with pandas
 records_df = pd.DataFrame.from_dict(records)
+print('Data frame ready!')
+
+# get the end time
+et = time.time()
+
+# get the execution time
+elapsed_time = et - st
+print('Execution time:', elapsed_time, 'seconds')
 
 # view the top records
 print(records_df.head())
