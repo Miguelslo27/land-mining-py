@@ -2,11 +2,12 @@ MVP - v0.1
 - [CHECK] Connect to google sheet to get codes
 -    key=API_KEY
 -    AIzaSyBsNSroAVkajIVIO_2q9CiBunB9FrMM8vo
-- [CHECK] List codes  
+- [CHECK] Cache the result to avoid requesting Google API if not needed
+- [CHECK] List codes
 - [CHECK] Test the form where the code goes with one code
 - [CHECK] Parse the response
 - [CHECK] Create a function to send the code to the form and parse the response
-- [...] Go through all codes list and print it
+- Go through all codes list and print it
 - Call the function for each code
 - Update the row in the spreadsheet with the new values
 

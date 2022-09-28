@@ -4,10 +4,9 @@ import pandas as pd
 # from pyquery import PyQuery
 # from oauth2client.service_account import ServiceAccountCredentials
 from imc import get_debt
-from gspread_utils import get_spreadsheet
+from gspread_utils import get_spread_content
 
 gst = time.time()
-
 
 # # defining the scope of the application
 # scope_app = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
@@ -47,12 +46,12 @@ gst = time.time()
 # print(inspect.getmembers(sheet_instance, predicate = inspect.ismethod))
 # print(*inspect.getmembers(sheet_instance, predicate = inspect.ismethod), sep = "\n")
 
-sheet = get_spreadsheet('Terrenos la costa')
+# sheet = get_spreadsheet('Terrenos la costa')
 
 st = time.time()
 print('==> Get all sheet records...')
 # get all the records of the data
-records = sheet.get_all_records()
+records = get_spread_content('Terrenos la costa')
 et = time.time()
 elapsed_time = et - st
 print('<== Sheet records ready in', elapsed_time, 'seconds!')
