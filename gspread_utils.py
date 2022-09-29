@@ -6,26 +6,26 @@ import unicodedata
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+# defining the scope of the application
+scope_app = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+
+st = time.time()
+print('==> Get service account credentials...')
+#credentials to the account
+cred = ServiceAccountCredentials.from_json_keyfile_name('keys.json', scope_app)
+et = time.time()
+elapsed_time = et - st
+print('<== Service account credentials ready in', elapsed_time, 'seconds!')
+
+st = time.time()
+print('==> Get Google Spreadsheet client...')
+# authorize the clientsheet 
+client = gspread.authorize(cred)
+et = time.time()
+elapsed_time = et - st
+print('<== Google Spreadsheet client ready in', elapsed_time, 'seconds!')
+
 def get_spreadsheet(spname):
-  # defining the scope of the application
-  scope_app = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-
-  st = time.time()
-  print('==> Get service account credentials...')
-  #credentials to the account
-  cred = ServiceAccountCredentials.from_json_keyfile_name('keys.json', scope_app)
-  et = time.time()
-  elapsed_time = et - st
-  print('<== Service account credentials ready in', elapsed_time, 'seconds!')
-
-  st = time.time()
-  print('==> Get Google Spreadsheet client...')
-  # authorize the clientsheet 
-  client = gspread.authorize(cred)
-  et = time.time()
-  elapsed_time = et - st
-  print('<== Google Spreadsheet client ready in', elapsed_time, 'seconds!')
-
   st = time.time()
   print('==> Get spreadsheet "', spname, '"...')
   # get the sample of the Spreadsheet
@@ -75,36 +75,39 @@ def get_spread_content(spname):
 
     return spreadsheet_content
 
+def update_spread_content(spname, cell, value):
+  get_spreadsheet(spname).update(cell, value)
+
 def strip_accents(text):
-    """
-    Strip accents from input String
+  """
+  Strip accents from input String
 
-    :param text: The input string
-    :type text: String.
+  :param text: The input string
+  :type text: String.
 
-    :returns: The processed String
-    :rtype: String.
-    """
-    try:
-        text = unicode(text, 'utf-8')
-    except (TypeError, NameError): # unicode is a default on python 3
-        pass
-    text = unicodedata.normalize('NFD', text)
-    text = text.encode('ascii', 'ignore')
-    text = text.decode("utf-8")
-    return str(text)
+  :returns: The processed String
+  :rtype: String.
+  """
+  try:
+      text = unicode(text, 'utf-8')
+  except (TypeError, NameError): # unicode is a default on python 3
+      pass
+  text = unicodedata.normalize('NFD', text)
+  text = text.encode('ascii', 'ignore')
+  text = text.decode("utf-8")
+  return str(text)
 
 def sanitize_text(text):
-    """
-    Convert input text to id.
+  """
+  Convert input text to id.
 
-    :param text: The input string
-    :type text: String.
+  :param text: The input string
+  :type text: String.
 
-    :returns: The processed String
-    :rtype: String.
-    """
-    text = strip_accents(text.lower())
-    text = re.sub('[ ]+', '_', text)
-    text = re.sub('[^0-9a-zA-Z_-]', '', text)
-    return text
+  :returns: The processed String
+  :rtype: String.
+  """
+  text = strip_accents(text.lower())
+  text = re.sub('[ ]+', '_', text)
+  text = re.sub('[^0-9a-zA-Z_-]', '', text)
+  return text

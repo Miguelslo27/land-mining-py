@@ -7,8 +7,8 @@ MVP - v0.1
 - [CHECK] Test the form where the code goes with one code
 - [CHECK] Parse the response
 - [CHECK] Create a function to send the code to the form and parse the response
-- Go through all codes list and print it
-- Call the function for each code
-- Update the row in the spreadsheet with the new values
+- [CHECK] Go through all codes list and print it
+- [CHECK] Call the function for each code
+- [CHECK] Update the row in the spreadsheet with the new values
 
 # New features
