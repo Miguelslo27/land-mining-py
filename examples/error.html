@@ -1,86 +1,252 @@
 <html>
-<head>
-<meta name="Generator" content="GeneXus Java"/>
-<meta name="Version" content="9_0_4-073"/>
-<meta name="Description" content="Consulta Deuda Web - Canelones"/>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<title>Consulta Deuda Web - Canelones</title>
-<link rel="stylesheet" type="text/css" href="/cows/images/TemaTEx.css"/>
-<script language="JavaScript" src="/cows/images/gxtypes.js"></script>
-<script language="JavaScript" src="/cows/images/gxballoon.js"></script>
-<script language="JavaScript" src="/cows/images/gxfwddcl.js"></script>
-<script language="JavaScript" src="/cows/images/gxfrmutl.js"></script>
-<script language="JavaScript" src="/cows/images/gxcallrpc.js"></script>
-<script language="JavaScript" src="/cows/images/gxautosuggest.js"></script>
-<script language="JavaScript" src="/cows/images/setevent.js"></script>
-</head>
-<body class="Form" style="MARGIN: 0px; BACKGROUND-COLOR: #ffffff"  bgcolor="#ffffff" onload="gxonload();" onkeyup="form_onkeyup(event)" onkeypress="form_onkeypress(event,false,false)" onkeydown="form_onkeypress(null,false,false)">
-<form id="MAINFORM" onsubmit="try{return GXValidForm()}catch(e){return true;}" name="MAINFORM" method="POST" ACTION="hconsultadeudawebcan">
 
-<input type="hidden" name="_EventName" value=""/>
-<input type="hidden" name="_EventGridId" value=""/>
-<input type="hidden" name="_EventRowId" value=""/><table id="TABLE2" class="Table" cellpadding="1" cellspacing="2"><TBODY><TR><TD colSpan=4></TD></TR><TR><TD colSpan=4><table id="TABLE3" class="Table" cellpadding="1" cellspacing="2"><TBODY><TR><TD><span id="TEXTBLOCK1" class="TextBlock" style="font-family:'Verdana'; font-size:9pt; font-weight:normal; font-style:normal" >Código municipal</span> </TD><TD><table id="TABLE1" class="Table" border="  2" cellpadding="0" cellspacing="0" style=" border-color: #000000;border-width:  2;" ><TBODY><TR><TD><input type="text" id="_IDPADRON" name="_IDPADRON" value="107010" size="9" maxlength="9" class="Attribute" style="font-family:'Verdana'; font-size:9pt; font-weight:normal; font-style:normal; background:#FFFFFF"  gxctx="_" gxrow="0001" onFocus="gxonfocus2(this, 6,'',20)" onchange="gxonchange(this)"  onBlur="valid_integer( this,'.');;GXOnBlur(6);"></TD></TR></TBODY></table></TD><TD><input type=SUBMIT name="BUTTON1" value="Buscar" style="font-family:'Verdana'; font-size:9pt; font-weight:bold; font-style:normal; color:#008000; border-width:1"  gxevent="E\'CONSULTA DE DEUDA\'."  onclick="GX_setgridevent( 20,   1);GX_setevent('E\'CONSULTA DE DEUDA\'.');"  gxctx="_" onFocus="gxonfocus2(this, 8,'',20)"></TD></TR></TBODY></table><P>&nbsp;&nbsp;</P><P><span id="TBCUOTAS" class="TextBlock" style=";display:none;font-family:'Verdana'; font-size:9pt; font-weight:normal; font-style:normal" >Detalle en cuotas de la deuda</span></P></TD></TR><TR><TD colSpan=4>&nbsp;<table id="GRILLADEUDA" class="Grid" cellpadding="1" cellspacing="0" rules="all" style="display:none; border-color: #008000;" >
-<tr>
-<th align="LEFT" width=59px class="GridTitle" style="display:none;background:transparent;color:#000000" >(Hidden)</th>
-<th align="LEFT" width=59px class="GridTitle" style="display:none;background:transparent;color:#000000" >(Hidden)</th>
-<th align="LEFT" width=65px class="GridTitle" style="background:transparent;color:#000000" >Año</th>
-<th align="LEFT" width=80px class="GridTitle" style="background:transparent;color:#000000" >Vencimiento</th>
-<th align="LEFT" width=65px class="GridTitle" style="display:none;background:transparent;color:#000000" >(Hidden)</th>
-<th align="LEFT" width=185px class="GridTitle" style="background:transparent;color:#000000" >Concepto</th>
-<th align="LEFT" width=50px class="GridTitle" style="background:transparent;color:#000000" >Cuota</th>
-<th align="LEFT" width=125px class="GridTitle" style="background:transparent;color:#000000" >Importe</th>
-<th align="RIGHT" width=93px class="GridTitle" style="display:none;background:transparent;color:#000000" >(Hidden)</th>
-</tr>
-<tr class="GridOdd" style="background:transparent;" ><td valign=top align="LEFT" style="display:none;" ><span class="ReadonlyAttribute" style="background:transparent;color:#000000;display:none;" ><input type="checkbox"  name="_PAGA_0001" class="ReadonlyAttribute" value=1 gxctx="_" gxrow="0001" onFocus="gxonfocus2(this, 11,'',20)" onclick="gxonchange(this)"  onBlur=";GXOnBlur(11);">Año</span><script>GXDisableCtrl("_PAGA_0001")</script><td valign=top align="LEFT" style="display:none;" ><span class="ReadonlyAttribute" style="background:transparent;color:#000000;display:none;" ><input type="checkbox"  name="_PERMITIDO_0001" class="ReadonlyAttribute" value=1 gxctx="_" gxrow="0001" onFocus="gxonfocus2(this, 12,'',20)" onclick="gxonchange(this)"  onBlur=";GXOnBlur(12);"></span><script>GXDisableCtrl("_PERMITIDO_0001")</script><td valign=top align="LEFT">
-<input type="hidden" name="_SANIO_0001" value=""/><span id="span__SANIO_0001" style="background:transparent;color:#000000" ></span></td>
-<td valign=top align="LEFT">
-<input type="hidden" name="_VTO_0001" value=""/><span id="span__VTO_0001" style="background:transparent;color:#000000" ></span></td>
-<td valign=top align="LEFT" style="display:none;" >
-<input type="hidden" name="_CODIGOCONCEPTO_0001" value=""/><td valign=top align="LEFT">
-<input type="hidden" name="_CONCEPTO_0001" value="SUBTOTAL"/><span id="span__CONCEPTO_0001" style="font-weight:bold;color:#008000;background:transparent;" >SUBTOTAL</span></td>
-<td valign=top align="LEFT">
-<input type="hidden" name="_CUOTA_0001" value=""/><span id="span__CUOTA_0001" style="background:transparent;color:#000000" ></span></td>
-<td valign=top align="LEFT">
-<input type="hidden" name="_IMPORTE_0001" value="0.00"/><span id="span__IMPORTE_0001" style="font-weight:bold;color:#008000;background:transparent;" >0.00</span></td>
-<td valign=top align="RIGHT" style="display:none;" >
-<input type="hidden" name="_LINEA_0001" value="0"/></tr>
-</table></TD></TR><TR><TD colSpan=4 align=center>
-<input type="hidden" name="_MENSAJERETORNO" value="Error: · ERROR&gt; No se pasó el control: Tiene convenios activos c/cuotas vencidas"/><span id="span__MENSAJERETORNO" class="ReadonlyAttribute" style="font-family:'Verdana'; font-size:10pt; font-weight:normal; font-style:normal" >Error: · ERROR&gt; No se pasó el control: Tiene convenios activos c/cuotas vencidas</span></TD></TR><TR><TD colSpan=4 align=center><P><span id="TBRESUMENDEUDA" class="TextBlock" style=";display:none;font-family:'Verdana'; font-size:9pt; font-weight:normal; font-style:normal" >Resumen de deuda</span></P><P><table id="GRILLADETALLE" class="Grid" cellpadding="1" cellspacing="0" rules="all" style="display:none;" >
-<tr>
-<th align="LEFT" width=185px class="GridTitle" style="background:transparent;color:#000000" >Concepto</th>
-<th align="LEFT" width=125px class="GridTitle" style="background:transparent;color:#000000" >Importe</th>
-</tr>
-</table></P></TD></TR><TR><TD colSpan=4><P align=center><span id="TBREDONDEO" class="TextBlock" style=";display:none;font-family:'Verdana'; font-size:9pt; font-weight:normal; font-style:normal" >Redondeo</span></P><P align=center><table id="GRILLAPAGO" class="Grid" cellpadding="1" cellspacing="0" rules="all" style="display:none;" >
-<tr>
-<th align="LEFT" width=200px class="GridTitle" style="background:transparent;color:#000000" >Concepto</th>
-<th align="LEFT" width=125px class="GridTitle" style="background:transparent;color:#000000" >Importe</th>
-</tr>
-</table></P></TD></TR><TR><TD colSpan=4><P align=center><table id="GRILLATOTAL" class="Grid" cellpadding="1" cellspacing="0" rules="all" style="display:none;" >
-<tr>
-<th align="RIGHT" width=141px class="GridTitle" style="background:transparent;color:#000000" >Total</th>
-</tr>
-<tr class="GridOdd" style="background:transparent;" ><td valign=top align="RIGHT">
-<input type="hidden" name="_MONTOFINAL_0001" value="0,00"/><span id="span__MONTOFINAL_0001" style="background:transparent;" >             0,00</span></td>
-</tr>
-</table></P></TD></TR></TBODY></table><STRONG><table id="TBLOCULTAR" class="Table" cellpadding="1" cellspacing="2" style="display:none;" ><TBODY><TR><TD></TD><TD></TD><TD></TD><TD>
-<input type="hidden" name="_AUXILIARCOBRO" value="0"/></TD><TD></TD></TR><TR><TD></TD><TD>
-<input type="hidden" name="_VALPAR" value=""/></TD><TD></TD><TD>
-<input type="hidden" name="_NUMEROPREFACTURA" value="0"/></TD><TD></TD></TR><TR><TD>
-<input type="hidden" name="_NROPARAMETRO" value="0"/></TD><TD>
-<input type="hidden" name="_TIPOBUSQUEDA" value="0"/></TD><TD></TD><TD>
-<input type="hidden" name="_CODIGORETORNO" value="018"/></TD><TD></TD></TR><TR><TD></TD><TD></TD><TD></TD><TD>
-<input type="hidden" name="_PADRON" value=""/></TD><TD>&nbsp;&nbsp;&nbsp; </TD></TR></TBODY></table><P>&nbsp;</P><P></STRONG>&nbsp;</P>
-<input type="hidden" name="nRC_Grilladeuda" value="1"/>
-<input type="hidden" name="nRC_Grilladetalle" value="0"/>
-<input type="hidden" name="nRC_Grillapago" value="0"/>
-<input type="hidden" name="nRC_Grillatotal" value="1"/>
-<input type="hidden" name="sCallerURL" value=""/></form>
-<script language="JavaScript" type="text/javascript">
-var GXBadNumMsg = "El valor no representa un número correcto.";
-var GXPARAMETERS = new Array();
-GXSetUserFocus(document.forms[0]._IDPADRON);
-</script>
-<script language="JavaScript" src="/cows/images/gx_help.js"></script>
-<script language="JavaScript" src="/cows/images/hconsultadeudawebcan.js"></script>
+<head>
+  <meta name="Generator" content="GeneXus Java" />
+  <meta name="Version" content="9_0_4-073" />
+  <meta name="Description" content="Consulta Deuda Web - Canelones" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Consulta Deuda Web - Canelones</title>
+  <link rel="stylesheet" type="text/css" href="/cows/images/TemaTEx.css" />
+  <script language="JavaScript" src="/cows/images/gxtypes.js"></script>
+  <script language="JavaScript" src="/cows/images/gxballoon.js"></script>
+  <script language="JavaScript" src="/cows/images/gxfwddcl.js"></script>
+  <script language="JavaScript" src="/cows/images/gxfrmutl.js"></script>
+  <script language="JavaScript" src="/cows/images/gxcallrpc.js"></script>
+  <script language="JavaScript" src="/cows/images/gxautosuggest.js"></script>
+  <script language="JavaScript" src="/cows/images/setevent.js"></script>
+</head>
+
+<body class="Form" style="MARGIN: 0px; BACKGROUND-COLOR: #ffffff" bgcolor="#ffffff" onload="gxonload();"
+  onkeyup="form_onkeyup(event)" onkeypress="form_onkeypress(event,false,false)"
+  onkeydown="form_onkeypress(null,false,false)">
+  <form id="MAINFORM" onsubmit="try{return GXValidForm()}catch(e){return true;}" name="MAINFORM" method="POST"
+    ACTION="hconsultadeudawebcan">
+
+    <input type="hidden" name="_EventName" value="" />
+    <input type="hidden" name="_EventGridId" value="" />
+    <input type="hidden" name="_EventRowId" value="" />
+    <table id="TABLE2" class="Table" cellpadding="1" cellspacing="2">
+      <TBODY>
+        <TR>
+          <TD colSpan=4></TD>
+        </TR>
+        <TR>
+          <TD colSpan=4>
+            <table id="TABLE3" class="Table" cellpadding="1" cellspacing="2">
+              <TBODY>
+                <TR>
+                  <TD><span id="TEXTBLOCK1" class="TextBlock"
+                      style="font-family:'Verdana'; font-size:9pt; font-weight:normal; font-style:normal">Código
+                      municipal</span> </TD>
+                  <TD>
+                    <table id="TABLE1" class="Table" border="  2" cellpadding="0" cellspacing="0"
+                      style=" border-color: #000000;border-width:  2;">
+                      <TBODY>
+                        <TR>
+                          <TD><input type="text" id="_IDPADRON" name="_IDPADRON" value="107010" size="9" maxlength="9"
+                              class="Attribute"
+                              style="font-family:'Verdana'; font-size:9pt; font-weight:normal; font-style:normal; background:#FFFFFF"
+                              gxctx="_" gxrow="0001" onFocus="gxonfocus2(this, 6,'',20)" onchange="gxonchange(this)"
+                              onBlur="valid_integer( this,'.');;GXOnBlur(6);"></TD>
+                        </TR>
+                      </TBODY>
+                    </table>
+                  </TD>
+                  <TD><input type=SUBMIT name="BUTTON1" value="Buscar"
+                      style="font-family:'Verdana'; font-size:9pt; font-weight:bold; font-style:normal; color:#008000; border-width:1"
+                      gxevent="E\'CONSULTA DE DEUDA\'."
+                      onclick="GX_setgridevent( 20,   1);GX_setevent('E\'CONSULTA DE DEUDA\'.');" gxctx="_"
+                      onFocus="gxonfocus2(this, 8,'',20)"></TD>
+                </TR>
+              </TBODY>
+            </table>
+            <P>&nbsp;&nbsp;</P>
+            <P><span id="TBCUOTAS" class="TextBlock"
+                style=";display:none;font-family:'Verdana'; font-size:9pt; font-weight:normal; font-style:normal">Detalle
+                en cuotas de la deuda</span></P>
+          </TD>
+        </TR>
+        <TR>
+          <TD colSpan=4>&nbsp;<table id="GRILLADEUDA" class="Grid" cellpadding="1" cellspacing="0" rules="all"
+              style="display:none; border-color: #008000;">
+              <tr>
+                <th align="LEFT" width=59px class="GridTitle" style="display:none;background:transparent;color:#000000">
+                  (Hidden)</th>
+                <th align="LEFT" width=59px class="GridTitle" style="display:none;background:transparent;color:#000000">
+                  (Hidden)</th>
+                <th align="LEFT" width=65px class="GridTitle" style="background:transparent;color:#000000">Año</th>
+                <th align="LEFT" width=80px class="GridTitle" style="background:transparent;color:#000000">Vencimiento
+                </th>
+                <th align="LEFT" width=65px class="GridTitle" style="display:none;background:transparent;color:#000000">
+                  (Hidden)</th>
+                <th align="LEFT" width=185px class="GridTitle" style="background:transparent;color:#000000">Concepto
+                </th>
+                <th align="LEFT" width=50px class="GridTitle" style="background:transparent;color:#000000">Cuota</th>
+                <th align="LEFT" width=125px class="GridTitle" style="background:transparent;color:#000000">Importe</th>
+                <th align="RIGHT" width=93px class="GridTitle"
+                  style="display:none;background:transparent;color:#000000">(Hidden)</th>
+              </tr>
+              <tr class="GridOdd" style="background:transparent;">
+                <td valign=top align="LEFT" style="display:none;"><span class="ReadonlyAttribute"
+                    style="background:transparent;color:#000000;display:none;"><input type="checkbox" name="_PAGA_0001"
+                      class="ReadonlyAttribute" value=1 gxctx="_" gxrow="0001" onFocus="gxonfocus2(this, 11,'',20)"
+                      onclick="gxonchange(this)" onBlur=";GXOnBlur(11);">Año</span>
+                  <script>GXDisableCtrl("_PAGA_0001")</script>
+                <td valign=top align="LEFT" style="display:none;"><span class="ReadonlyAttribute"
+                    style="background:transparent;color:#000000;display:none;"><input type="checkbox"
+                      name="_PERMITIDO_0001" class="ReadonlyAttribute" value=1 gxctx="_" gxrow="0001"
+                      onFocus="gxonfocus2(this, 12,'',20)" onclick="gxonchange(this)" onBlur=";GXOnBlur(12);"></span>
+                  <script>GXDisableCtrl("_PERMITIDO_0001")</script>
+                <td valign=top align="LEFT">
+                  <input type="hidden" name="_SANIO_0001" value="" /><span id="span__SANIO_0001"
+                    style="background:transparent;color:#000000"></span>
+                </td>
+                <td valign=top align="LEFT">
+                  <input type="hidden" name="_VTO_0001" value="" /><span id="span__VTO_0001"
+                    style="background:transparent;color:#000000"></span>
+                </td>
+                <td valign=top align="LEFT" style="display:none;">
+                  <input type="hidden" name="_CODIGOCONCEPTO_0001" value="" />
+                <td valign=top align="LEFT">
+                  <input type="hidden" name="_CONCEPTO_0001" value="SUBTOTAL" /><span id="span__CONCEPTO_0001"
+                    style="font-weight:bold;color:#008000;background:transparent;">SUBTOTAL</span>
+                </td>
+                <td valign=top align="LEFT">
+                  <input type="hidden" name="_CUOTA_0001" value="" /><span id="span__CUOTA_0001"
+                    style="background:transparent;color:#000000"></span>
+                </td>
+                <td valign=top align="LEFT">
+                  <input type="hidden" name="_IMPORTE_0001" value="0.00" /><span id="span__IMPORTE_0001"
+                    style="font-weight:bold;color:#008000;background:transparent;">0.00</span>
+                </td>
+                <td valign=top align="RIGHT" style="display:none;">
+                  <input type="hidden" name="_LINEA_0001" value="0" />
+              </tr>
+            </table>
+          </TD>
+        </TR>
+        <TR>
+          <TD colSpan=4 align=center>
+            <input type="hidden" name="_MENSAJERETORNO"
+              value="Error: · ERROR&gt; No se pasó el control: Tiene convenios activos c/cuotas vencidas" /><span
+              id="span__MENSAJERETORNO" class="ReadonlyAttribute"
+              style="font-family:'Verdana'; font-size:10pt; font-weight:normal; font-style:normal">Error: · ERROR&gt; No
+              se pasó el control: Tiene convenios activos c/cuotas vencidas</span>
+          </TD>
+        </TR>
+        <TR>
+          <TD colSpan=4 align=center>
+            <P><span id="TBRESUMENDEUDA" class="TextBlock"
+                style=";display:none;font-family:'Verdana'; font-size:9pt; font-weight:normal; font-style:normal">Resumen
+                de deuda</span></P>
+            <P>
+            <table id="GRILLADETALLE" class="Grid" cellpadding="1" cellspacing="0" rules="all" style="display:none;">
+              <tr>
+                <th align="LEFT" width=185px class="GridTitle" style="background:transparent;color:#000000">Concepto
+                </th>
+                <th align="LEFT" width=125px class="GridTitle" style="background:transparent;color:#000000">Importe</th>
+              </tr>
+            </table>
+            </P>
+          </TD>
+        </TR>
+        <TR>
+          <TD colSpan=4>
+            <P align=center><span id="TBREDONDEO" class="TextBlock"
+                style=";display:none;font-family:'Verdana'; font-size:9pt; font-weight:normal; font-style:normal">Redondeo</span>
+            </P>
+            <P align=center>
+            <table id="GRILLAPAGO" class="Grid" cellpadding="1" cellspacing="0" rules="all" style="display:none;">
+              <tr>
+                <th align="LEFT" width=200px class="GridTitle" style="background:transparent;color:#000000">Concepto
+                </th>
+                <th align="LEFT" width=125px class="GridTitle" style="background:transparent;color:#000000">Importe</th>
+              </tr>
+            </table>
+            </P>
+          </TD>
+        </TR>
+        <TR>
+          <TD colSpan=4>
+            <P align=center>
+            <table id="GRILLATOTAL" class="Grid" cellpadding="1" cellspacing="0" rules="all" style="display:none;">
+              <tr>
+                <th align="RIGHT" width=141px class="GridTitle" style="background:transparent;color:#000000">Total</th>
+              </tr>
+              <tr class="GridOdd" style="background:transparent;">
+                <td valign=top align="RIGHT">
+                  <input type="hidden" name="_MONTOFINAL_0001" value="0,00" /><span id="span__MONTOFINAL_0001"
+                    style="background:transparent;"> 0,00</span>
+                </td>
+              </tr>
+            </table>
+            </P>
+          </TD>
+        </TR>
+      </TBODY>
+    </table><STRONG>
+      <table id="TBLOCULTAR" class="Table" cellpadding="1" cellspacing="2" style="display:none;">
+        <TBODY>
+          <TR>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <input type="hidden" name="_AUXILIARCOBRO" value="0" />
+            </TD>
+            <TD></TD>
+          </TR>
+          <TR>
+            <TD></TD>
+            <TD>
+              <input type="hidden" name="_VALPAR" value="" />
+            </TD>
+            <TD></TD>
+            <TD>
+              <input type="hidden" name="_NUMEROPREFACTURA" value="0" />
+            </TD>
+            <TD></TD>
+          </TR>
+          <TR>
+            <TD>
+              <input type="hidden" name="_NROPARAMETRO" value="0" />
+            </TD>
+            <TD>
+              <input type="hidden" name="_TIPOBUSQUEDA" value="0" />
+            </TD>
+            <TD></TD>
+            <TD>
+              <input type="hidden" name="_CODIGORETORNO" value="018" />
+            </TD>
+            <TD></TD>
+          </TR>
+          <TR>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <input type="hidden" name="_PADRON" value="" />
+            </TD>
+            <TD>&nbsp;&nbsp;&nbsp; </TD>
+          </TR>
+        </TBODY>
+      </table>
+      <P>&nbsp;</P>
+      <P>
+    </STRONG>&nbsp;</P>
+    <input type="hidden" name="nRC_Grilladeuda" value="1" />
+    <input type="hidden" name="nRC_Grilladetalle" value="0" />
+    <input type="hidden" name="nRC_Grillapago" value="0" />
+    <input type="hidden" name="nRC_Grillatotal" value="1" />
+    <input type="hidden" name="sCallerURL" value="" />
+  </form>
+  <script language="JavaScript" type="text/javascript">
+    var GXBadNumMsg = "El valor no representa un número correcto.";
+    var GXPARAMETERS = new Array();
+    GXSetUserFocus(document.forms[0]._IDPADRON);
+  </script>
+  <script language="JavaScript" src="/cows/images/gx_help.js"></script>
+  <script language="JavaScript" src="/cows/images/hconsultadeudawebcan.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,177 @@
+<html>
+
+<head>
+  <meta name="Generator" content="GeneXus Java" />
+  <meta name="Version" content="9_0_4-073" />
+  <meta name="Description" content="Imprimir Duplicados para un período" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Imprimir Duplicados para un período</title>
+  <link rel="stylesheet" type="text/css" href="/cows/images/TemaTEx.css" />
+  <script language="JavaScript" src="/cows/images/gxtypes.js"></script>
+  <script language="JavaScript" src="/cows/images/gxballoon.js"></script>
+  <script language="JavaScript" src="/cows/images/gxfwddcl.js"></script>
+  <script language="JavaScript" src="/cows/images/gxfrmutl.js"></script>
+  <script language="JavaScript" src="/cows/images/gxcallrpc.js"></script>
+  <script language="JavaScript" src="/cows/images/gxautosuggest.js"></script>
+  <script language="JavaScript" src="/cows/images/setevent.js"></script>
+</head>
+
+<body class="Form" style="MARGIN: 0px; BACKGROUND-COLOR: #ffffff" bgcolor="#ffffff" onload="gxonload();"
+  onkeyup="form_onkeyup(event)" onkeypress="form_onkeypress(event,false,false)"
+  onkeydown="form_onkeypress(null,false,false)">
+  <form id="MAINFORM" onsubmit="try{return GXValidForm()}catch(e){return true;}" name="MAINFORM" method="POST"
+    ACTION="himprimirduplicadoperiodo">
+
+    <input type="hidden" name="_EventName" value="" />
+    <input type="hidden" name="_EventGridId" value="" />
+    <input type="hidden" name="_EventRowId" value="" /><span>
+      <menu>
+        <li>El valor no representa un número correcto.</li>
+      </menu>
+    </span>
+    <table id="TABLE2" class="Table" cellpadding="1" cellspacing="2" style=" height: 176px; width: 303px;">
+      <TBODY>
+        <TR>
+          <TD colSpan=4></TD>
+        </TR>
+        <TR>
+          <TD colSpan=4>
+            <table id="TABLE3" class="Table" cellpadding="1" cellspacing="2">
+              <TBODY>
+                <TR style="COLOR: ">
+                  <TD style="COLOR: "><span id="TEXTBLOCK1" class="TextBlock"
+                      style="font-family:'Arial'; font-size:10pt; font-weight:normal; font-style:normal">Código
+                      Municipal</span></TD>
+                  <TD style="COLOR: ">
+                    <table id="TABLE1" class="Table" border="  2" cellpadding="0" cellspacing="0"
+                      style=" border-color: #000000;border-width:  2;">
+                      <TBODY>
+                        <TR>
+                          <TD><input type="text" id="_IDPADRON" name="_IDPADRON" value="107008" size="9" maxlength="9"
+                              class="Attribute"
+                              style="font-family:'Arial'; font-size:10pt; font-weight:normal; font-style:normal; background:#FFFFFF"
+                              gxctx="_" gxrow="0001" onFocus="gxonfocus2(this, 6,'',24)" onchange="gxonchange(this)"
+                              onBlur="valid_integer( this,'.');;GXOnBlur(6);"></TD>
+                        </TR>
+                      </TBODY>
+                    </table>
+                  </TD>
+                  <TD style="COLOR: ">
+                    <input type="hidden" name="_BUSCAR" value="" />
+                  </TD>
+                </TR>
+                <TR>
+                  <TD><span id="TEXTBLOCK2" class="TextBlock"
+                      style="font-family:'Arial'; font-size:10pt; font-weight:normal; font-style:normal">Año</span></TD>
+                  <TD>
+                    <table id="TABLE4" class="Table" border="  2" cellpadding="0" cellspacing="0"
+                      style=" border-color: #000000;border-width:  2;">
+                      <TBODY>
+                        <TR>
+                          <TD><input type="text" id="_ANIO" name="_ANIO" value="0" size="4" maxlength="4"
+                              class="Attribute"
+                              style="font-family:'Arial'; font-size:10pt; font-weight:normal; font-style:normal; background:#FFFFFF"
+                              gxctx="_" gxrow="0001" onFocus="gxonfocus2(this, 11,'',24)" onchange="gxonchange(this)"
+                              onBlur="valid_integer( this,'.');;GXOnBlur(11);"></TD>
+                        </TR>
+                      </TBODY>
+                    </table>
+                  </TD>
+                  <TD><input type=SUBMIT name="BUTTON1" value="Buscar"
+                      style="font-family:'Verdana'; font-size:9pt; font-weight:bold; font-style:normal; color:#008000; border-width:1"
+                      gxevent="E\'BUSCARCOBROS\'."
+                      onclick="GX_setgridevent( 24,   1);GX_setevent('E\'BUSCARCOBROS\'.');" gxctx="_"
+                      onFocus="gxonfocus2(this, 13,'',24)"></TD>
+                </TR>
+              </TBODY>
+            </table>
+          </TD>
+        </TR>
+        <TR style="COLOR: ">
+          <TD style="COLOR: " borderColorDark=#a00000><input type="text" id="_MENSAJERETORNO" name="_MENSAJERETORNO"
+              value="" size="80" maxlength="100" class="Attribute"
+              style="font-family:'Verdana'; font-size:10pt; font-weight:bold; font-style:normal; color:#C00000"
+              gxctx="_" gxrow="0001" onFocus="gxonfocus2(this, 15,'',24)" onchange="gxonchange(this)"
+              onBlur=";GXOnBlur(15);"></TD>
+        </TR>
+        <TR>
+          <TD colSpan=4>
+            <table id="TABLEDOWNLOAD" class="Table" cellpadding="1" cellspacing="2" style="display:none;">
+              <TBODY>
+                <TR>
+                  <TD><span id="TBDESCARGAR" class="TextBlock" style="color:#00468C">Descargar recibo</span> </TD>
+                  <TD><img src="/cows/images/./bigfolder.gif" id="IMGDOWNLOAD" class="Image"
+                      style=";width: 32;height: 32" /></TD>
+                </TR>
+              </TBODY>
+            </table>
+          </TD>
+        </TR>
+        <TR style="COLOR: ">
+          <TD style="COLOR: " borderColorDark=#000d>
+            <table id="GRILLACOBROS" class="Grid" cellpadding="1" cellspacing="0" rules="all" style="display:none;">
+              <tr>
+                <th align="CENTER" width=24px class="GridTitle" style="background:#55AE42; color:#000000"></th>
+                <th align="RIGHT" nowrap class="GridTitle" style="background:#55AE42; color:#000000">Nro. Cobro</th>
+                <th align="LEFT" nowrap class="GridTitle" style="background:#55AE42; color:#000000">Fecha</th>
+                <th align="RIGHT" nowrap class="GridTitle" style="background:#55AE42; color:#000000">Total</th>
+              </tr>
+            </table>
+          </TD>
+        <TR>
+          <TD colSpan=4></TD>
+        </TR>
+      </TBODY>
+    </table><STRONG>
+      <table id="TBLOCULTAR" class="Table" cellpadding="1" cellspacing="2" style="display:none;">
+        <TBODY>
+          <TR>
+            <TD><span id="JS" class="TextBlock">
+                <SCRIPT language="JavaScript" src="../images/geoventanas.js"></SCRIPT>
+              </span></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+          </TR>
+          <TR>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+          </TR>
+          <TR>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+          </TR>
+          <TR>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+          </TR>
+        </TBODY>
+      </table>
+    </STRONG>
+    <input type="hidden" name="nRC_Grillacobros" value="0" />
+    <input type="hidden" name="sCallerURL"
+      value="https://tributos.imcanelones.gub.uy:8443/cows/servlet/himprimirduplicadoperiodo" />
+    <input type="hidden" name="_TODAY" value="2022-09-28" />
+  </form>
+  <script language="JavaScript" type="text/javascript">
+    var GXBadNumMsg = "El valor no representa un número correcto.";
+    var GXPARAMETERS = new Array();
+    GXSetUserFocus(document.forms[0]._ANIO);
+  </script>
+  <script language="JavaScript" src="/cows/images/gxvdate.js"></script>
+  <script language="JavaScript" src="/cows/images/std_messages.js"></script>
+  <script language="JavaScript" src="/cows/images/gx_help.js"></script>
+  <script language="JavaScript" src="/cows/images/himprimirduplicadoperiodo.js"></script>
+</body>
+
+</html>

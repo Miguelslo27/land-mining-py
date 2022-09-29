@@ -1,7 +1,7 @@
 import time
 import pandas as pd
 import constants
-from imc import get_debt
+from imc import get_debt, get_invoice_copy
 from gspread_utils import get_spread_content, update_spread_content
 
 LANDS_SPREADSHEET_NAME = 'Terrenos la costa'
@@ -41,9 +41,11 @@ for i, row in records_df.iterrows():
     update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', constants.ERROR)
   else:
     update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', debt_status['debt'])
+    # get_invoice_copy(row['Código Municipal'], int(debt_status['since']))
 
   if debt_status['status'] == constants.IN_DEBT:
     update_spread_content(LANDS_SPREADSHEET_NAME, f'D{i + 2}', debt_status['since'])
+    # get_invoice_copy(row['Código Municipal'], int(debt_status['since']))
 
   print('=====================')
 
