@@ -11,4 +11,15 @@ MVP - v0.1
 - [CHECK] Call the function for each code
 - [CHECK] Update the row in the spreadsheet with the new values
 
-# New features
+# New features - v0.2
+- With the same id consult for invoice copy
+- Consult the invoie copy with the year before to the debt
+- If there is not result, go backward in time by one year, until get some result
+- Get the link of the invoice copy from the result
+- Get the invoice copy
+- Parse the invoice copy
+  - get location
+  - get land_id (padrón)
+  - get land_block (manzana)
+  - get land_number (solar)
+- Update the spread sheet with the data

@@ -33,13 +33,19 @@ print('|============================================|')
 print('| Execution time:', global_elapsed_time, 'seconds |')
 print('|============================================|')
 
-# view the top records
 for i, row in records_df.iterrows():
   print(get_debt(row['Código Municipal']))
   debt_status = get_debt(row['Código Municipal'])
-  update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', debt_status['debt'])
+
+  if debt_status['status'] == constants.ERROR:
+    update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', constants.ERROR)
+  else:
+    update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', debt_status['debt'])
 
   if debt_status['status'] == constants.IN_DEBT:
     update_spread_content(LANDS_SPREADSHEET_NAME, f'D{i + 2}', debt_status['since'])
 
   print('=====================')
+
+# Test with one code if needed
+# print(get_debt(107010))

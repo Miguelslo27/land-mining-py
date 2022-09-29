@@ -82,6 +82,10 @@ def get_debt(id):
 
   response = requests.post('https://tributos.imcanelones.gub.uy:8443/cows/servlet/hconsultadeudawebcan', cookies=cookies, headers=headers, data=data, verify=False)
 
+  # To test when some error occur
+  # with open('examples/error.html', 'w') as f:
+  #   f.write(response.text)
+
   obj = PyQuery(response.text)
   message = obj('span#span__MENSAJERETORNO').text()
   debt = obj('span#span__MONTOFINAL_0001').text()
@@ -94,15 +98,17 @@ def get_debt(id):
     land_data['status'] = constants.NOT_FOUND
     land_data['since'] = 0
     land_data['debt'] = 0
-  
-  if message == constants.NO_DEBT_MSG:
+  elif message == constants.NO_DEBT_MSG:
     land_data['status'] = constants.NO_DEBT
     land_data['since'] = 0
     land_data['debt'] = 0
-
-  if debt > 0:
+  elif debt > 0:
     land_data['status'] = constants.IN_DEBT
     land_data['since'] = debt_since
     land_data['debt'] = debt
+  else:
+    land_data['status'] = constants.ERROR
+    land_data['since'] = 0
+    land_data['debt'] = 0
 
   return land_data
