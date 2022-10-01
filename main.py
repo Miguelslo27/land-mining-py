@@ -55,8 +55,8 @@ def process_all():
     if int(row['Código Municipal']) <= last_id:
       continue
     
-    print(get_debt(row['Código Municipal']))
     debt_status = get_debt(row['Código Municipal'])
+    print(debt_status)
 
     try:
       if debt_status['status'] == constants.ERROR:
