@@ -154,9 +154,15 @@ def request_invoice_copy(_id, year, invoice_id):
   }
 
   response = request_imc('post', 'himprimirduplicadoperiodo', data)
-  
+  match = re.findall(r'href=["]?javascript:miVentana_Encript\(([^" >]+)["]?', response.text)
+  download_invoice_url = match[0].split(',')[0].replace('\'', '')
 
-def request_imc(method, path, data):
+  response = request_imc('get', download_invoice_url)
+
+  file_path = f'pdfs/copy_{_id}_{year}_{invoice_id}.pdf'
+  open(file_path, 'wb').write(response.content)
+
+def request_imc(method, path, data={}):
   imc_url = 'https://tributos.imcanelones.gub.uy:8443/cows/servlet/'
   url = imc_url + path
   
@@ -190,5 +196,5 @@ def request_imc(method, path, data):
   if method == 'post':
     return requests.post(url, cookies=cookies, headers=headers, data=data, verify=False)
   else:
-    return requests.post(url, cookies=cookies, headers=headers, data=data, verify=False)
+    return requests.post(url, cookies=cookies, headers=headers, verify=False)
 

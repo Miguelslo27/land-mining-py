@@ -1,7 +1,7 @@
 import time
 import pandas as pd
 import constants
-from imc import get_debt, get_invoice_copy
+from imc import get_debt, get_invoice_id, request_invoice_copy
 from gspread_utils import get_spread_content, update_spread_content
 
 LANDS_SPREADSHEET_NAME = 'Terrenos la costa'

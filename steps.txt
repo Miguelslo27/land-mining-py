@@ -14,12 +14,12 @@ MVP - v0.1
 # New features - v0.2
 - [CHECK] With the same id consult for invoice copy
 - [CHECK] Consult the invoie copy with the year of the debt
-- [...] Get the link of the invoice copy from the result
-- Get the invoice copy
-- If there is not result, go backward in time by one year, until get some result, and repeat
-- Parse the invoice copy
+- [CHECK] Get the link of the invoice copy from the result
+- [CHECK] Get the invoice copy
+- [...] Parse the invoice copy
   - get location
   - get land_id (padrón)
   - get land_block (manzana)
   - get land_number (solar)
 - Update the spread sheet with the data
+- If there is not result, go backward in time by one year, until get some result, and repeat
