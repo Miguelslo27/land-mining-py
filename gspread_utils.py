@@ -20,7 +20,7 @@ import gspread
 st = time.time()
 print('==> Get Google Spreadsheet client...')
 # authorize the clientsheet 
-client = gspread.service_account()
+client = gspread.service_account('./keys.json')
 # client = gspread.authorize(cred)
 et = time.time()
 elapsed_time = et - st
