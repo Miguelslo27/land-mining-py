@@ -21,5 +21,14 @@ MVP - v0.1
   - get land_id (padrón)
   - get land_block (manzana)
   - get land_number (solar)
-- [CHECK] Update the spread sheet with the data
+- [CHECK] Update the spreadsheet with the data
 - [CHECK] If there is not result, go backward in time by one year, until get some result, and repeat
+
+# Bug Fixes - v0.2.1
+- If spreadsheet get error (because of quota)
+  - Stop the process and sleep for 30 seconds
+  - continue from where it left
+
+# New features - v0.3
+- Get owner's land
+- Update the spreadhsheet with the data
