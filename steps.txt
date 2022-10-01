@@ -16,10 +16,10 @@ MVP - v0.1
 - [CHECK] Consult the invoie copy with the year of the debt
 - [CHECK] Get the link of the invoice copy from the result
 - [CHECK] Get the invoice copy
-- [...] Parse the invoice copy
+- [CHECK] Parse the invoice copy
   - get location
   - get land_id (padrón)
   - get land_block (manzana)
   - get land_number (solar)
-- Update the spread sheet with the data
-- If there is not result, go backward in time by one year, until get some result, and repeat
+- [CHECK] Update the spread sheet with the data
+- [CHECK] If there is not result, go backward in time by one year, until get some result, and repeat

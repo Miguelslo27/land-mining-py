@@ -1,5 +1,5 @@
 import re
-from urllib import request
+import PyPDF2
 import requests
 import constants
 from pyquery import PyQuery
@@ -75,11 +75,11 @@ def get_debt(_id):
     land_data['debt'] = 0
   elif message == constants.NO_DEBT_MSG:
     land_data['status'] = constants.NO_DEBT
-    land_data['since'] = 0
+    land_data['since'] = 2022
     land_data['debt'] = 0
   elif debt > 0:
     land_data['status'] = constants.IN_DEBT
-    land_data['since'] = debt_since
+    land_data['since'] = int(debt_since)
     land_data['debt'] = debt
   else:
     land_data['status'] = constants.ERROR
@@ -155,12 +155,31 @@ def request_invoice_copy(_id, year, invoice_id):
 
   response = request_imc('post', 'himprimirduplicadoperiodo', data)
   match = re.findall(r'href=["]?javascript:miVentana_Encript\(([^" >]+)["]?', response.text)
-  download_invoice_url = match[0].split(',')[0].replace('\'', '')
 
-  response = request_imc('get', download_invoice_url)
+  # Test
 
-  file_path = f'pdfs/copy_{_id}_{year}_{invoice_id}.pdf'
-  open(file_path, 'wb').write(response.content)
+  if len(match) > 0:
+    download_invoice_url = match[0].split(',')[0].replace('\'', '')
+
+    # Get the invoice
+    response = request_imc('get', download_invoice_url)
+    # Save the invoice to PDF
+    file_path = f'pdfs/copy_{_id}_{year}_{invoice_id}.pdf'
+    open(file_path, 'wb').write(response.content)
+
+    try:
+      # Open the invoice
+      file = open(file_path, 'rb')
+      fileReader = PyPDF2.PdfFileReader(file)
+      # Read the invoice
+      page = fileReader.pages[0]
+      match = re.findall(r'Loc. Catastral:([^Nro.]*)Nro. Padrón:([\d]*) Manzana:([\d]*) Solar:([\d]*)', page.extract_text())
+
+      return match;
+    except:
+      return []
+
+  return []
 
 def request_imc(method, path, data={}):
   imc_url = 'https://tributos.imcanelones.gub.uy:8443/cows/servlet/'

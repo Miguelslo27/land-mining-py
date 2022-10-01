@@ -33,26 +33,52 @@ print('|============================================|')
 print('| Execution time:', global_elapsed_time, 'seconds |')
 print('|============================================|')
 
+def get_invoice_data(_id, year):
+  print('>>>>>>>>>>>>>>>>>>>>>>>>>')
+  print('Getting data from ' + str(year))
+  print('<<<<<<<<<<<<<<<<<<<<<<<<<')
+  invoice_data = request_invoice_copy(_id, year, get_invoice_id(_id, year))
+
+  if len(invoice_data) == 0 and int(year) - 1 > 2000:
+    invoice_data = get_invoice_data(_id, year - 1, get_invoice_id(_id, year - 1))
+
+  return invoice_data
+
 def process_all():
   for i, row in records_df.iterrows():
+    print('========================================================================')
+    print('========================================================================')
     print(get_debt(row['Código Municipal']))
     debt_status = get_debt(row['Código Municipal'])
 
     if debt_status['status'] == constants.ERROR:
       update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', constants.ERROR)
     else:
+      print('----------------')
+      print('|     ' + str(debt_status['since']) + '     |')
+      print('----------------')
+      
       update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', debt_status['debt'])
-      # get_invoice_copy(row['Código Municipal'], int(debt_status['since']))
+      update_spread_content(LANDS_SPREADSHEET_NAME, f'D{i + 2}', str(debt_status['since']))
+      invoice_data = get_invoice_data(row['Código Municipal'], debt_status['since'])
 
     if debt_status['status'] == constants.IN_DEBT:
-      update_spread_content(LANDS_SPREADSHEET_NAME, f'D{i + 2}', debt_status['since'])
-      # get_invoice_copy(row['Código Municipal'], int(debt_status['since']))
+      invoice_data = get_invoice_data(row['Código Municipal'], debt_status['since'])
 
-    print('=====================')
+    print('INVOICE DATA', invoice_data)
 
-# process_all()
+    if len(invoice_data) > 0:
+      update_spread_content(LANDS_SPREADSHEET_NAME, f'A{i + 2}', invoice_data[0][0])
+      update_spread_content(LANDS_SPREADSHEET_NAME, f'E{i + 2}', invoice_data[0][1])
+      update_spread_content(LANDS_SPREADSHEET_NAME, f'F{i + 2}', invoice_data[0][2])
+      update_spread_content(LANDS_SPREADSHEET_NAME, f'G{i + 2}', invoice_data[0][3])
+
+    print('========================================================================')
+    print('========================================================================')
+
+process_all()
 
 # Test with one code if needed
-print(get_debt(106996))
-print(get_invoice_id(106996, 2021))
-print(request_invoice_copy(106996, 2021, get_invoice_id(106996, 2021)))
+# print(get_debt(106996))
+# print(get_invoice_id(106996, 2021))
+# print(request_invoice_copy(106996, 2021, get_invoice_id(106996, 2021))[0][0])
