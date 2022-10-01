@@ -30,7 +30,6 @@ def get_spreadsheet(spname):
   print('==> Get spreadsheet "', spname, '"...')
   # get the sample of the Spreadsheet
   sheet = client.open(spname)
-  print('soooooo')
   et = time.time()
   elapsed_time = et - st
   print('<== Spreadsheet "', spname, '" ready in', elapsed_time, 'seconds!')

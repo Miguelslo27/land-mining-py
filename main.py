@@ -6,6 +6,7 @@ from imc import get_debt, get_invoice_id, request_invoice_copy
 from gspread_utils import get_spread_content, update_spread_content
 
 LANDS_SPREADSHEET_NAME = 'Terrenos la costa'
+TRACKING_PATH = f'last_land_id.txt'
 
 gst = time.time()
 
@@ -40,30 +41,40 @@ def get_invoice_data(_id, year):
   print('<<<<<<<<<<<<<<<<<<<<<<<<<')
   invoice_data = request_invoice_copy(_id, year, get_invoice_id(_id, year))
 
-  if len(invoice_data) == 0 and int(year) - 1 > 2000:
-    invoice_data = get_invoice_data(_id, year - 1, get_invoice_id(_id, year - 1))
+  if len(invoice_data) == 0 and int(year) - 1 >= 1998:
+    invoice_data = get_invoice_data(_id, year - 1)
 
   return invoice_data
 
 def process_all():
   for i, row in records_df.iterrows():
+    # Read the last land ID saved and start from the next
+    last_id = int(open(TRACKING_PATH, 'r').read())
+    print(int(row['Código Municipal']), last_id)
+
+    if int(row['Código Municipal']) <= last_id:
+      continue
+    
     print(get_debt(row['Código Municipal']))
     debt_status = get_debt(row['Código Municipal'])
 
     try:
       if debt_status['status'] == constants.ERROR:
         update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', constants.ERROR)
+      elif debt_status['status'] == constants.NOT_FOUND:
+        update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', constants.NOT_FOUND)
       else:
+        print('      DEBT      ')
         print('----------------')
         print('|     ' + str(debt_status['since']) + '     |')
         print('----------------')
         
         update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', debt_status['debt'])
         update_spread_content(LANDS_SPREADSHEET_NAME, f'D{i + 2}', str(debt_status['since']))
-        invoice_data = get_invoice_data(row['Código Municipal'], debt_status['since'])
+        invoice_data = get_invoice_data(row['Código Municipal'], 2022)
 
       if debt_status['status'] == constants.IN_DEBT:
-        invoice_data = get_invoice_data(row['Código Municipal'], debt_status['since'])
+        invoice_data = get_invoice_data(row['Código Municipal'], 2022)
 
       print('INVOICE DATA', invoice_data)
 
@@ -76,22 +87,24 @@ def process_all():
       print('∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆')
       print(sys.exc_info()[0])
       print('∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆')
+      last_id = int(open(TRACKING_PATH, 'r').read())
+      print(int(row['Código Municipal']), last_id - 1)
       time.sleep(30)
 
     print('========================================================================')
     print('========================================================================')
 
-    tracking_path = f'last_land_id.txt'
-    open(tracking_path, 'wb').write(row['Código Municipal'])
+    # Save last land id checked
+    open(TRACKING_PATH, 'w').write(str(row['Código Municipal']))
 
 process_all()
 
 # Test with one code if needed
 # print('========================================================================')
 # print('========================================================================')
-# print(get_debt(106999))
-# print(get_invoice_id(106999, 2021))
-# print(request_invoice_copy(106999, 2021, get_invoice_id(106999, 2022)))
+# print('DEBT', get_debt(107000))
+# print('INVOICE ID', get_invoice_id(107000, 2022))
+# print('INVOICE COPY', get_invoice_data(107000, 2022))
 # print('========================================================================')
 # print('========================================================================')
 # print(request_invoice_copy(106999, 2021, get_invoice_id(106999, 2021))[0][0])

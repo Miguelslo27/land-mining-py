@@ -25,9 +25,9 @@ MVP - v0.1
 - [CHECK] If there is not result, go backward in time by one year, until get some result, and repeat
 
 # Bug Fixes - v0.2.1
-- If spreadsheet get error (because of quota)
-  - Stop the process and sleep for 30 seconds
-  - continue from where it left
+- [CHECK] If spreadsheet get error (because of quota)
+  - [CHECK] Stop the process and sleep for 30 seconds
+  - [CHECK] continue from where it left
 
 # New features - v0.3
 - Get owner's land
