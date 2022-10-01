@@ -4,28 +4,38 @@ import time
 import re
 import unicodedata
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+# from oauth2client.service_account import ServiceAccountCredentials
 
 # defining the scope of the application
-scope_app = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+# scope_app = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
-st = time.time()
-print('==> Get service account credentials...')
+# st = time.time()
+# print('==> Get service account credentials...')
 #credentials to the account
-cred = ServiceAccountCredentials.from_json_keyfile_name('keys.json', scope_app)
-et = time.time()
-elapsed_time = et - st
-print('<== Service account credentials ready in', elapsed_time, 'seconds!')
+# cred = ServiceAccountCredentials.from_json_keyfile_name('keys.json', scope_app)
+# et = time.time()
+# elapsed_time = et - st
+# print('<== Service account credentials ready in', elapsed_time, 'seconds!')
 
 st = time.time()
 print('==> Get Google Spreadsheet client...')
 # authorize the clientsheet 
-client = gspread.authorize(cred)
+client = gspread.service_account()
+# client = gspread.authorize(cred)
 et = time.time()
 elapsed_time = et - st
 print('<== Google Spreadsheet client ready in', elapsed_time, 'seconds!')
 
+spreadsheet_instance = None
+
 def get_spreadsheet(spname):
+  global spreadsheet_instance
+  if spreadsheet_instance:
+    return spreadsheet_instance
+
+  print('Client', dir(client))
+  print('Auth', dir(client.auth))
+
   st = time.time()
   print('==> Get spreadsheet "', spname, '"...')
   # get the sample of the Spreadsheet
@@ -38,6 +48,7 @@ def get_spreadsheet(spname):
   print('==> Get first worksheet...')
   # get the first sheet of the Spreadsheet
   sheet_instance = sheet.get_worksheet(0)
+  spreadsheet_instance = sheet_instance
   et = time.time()
   elapsed_time = et - st
   print('<== Worksheet ready in', elapsed_time, 'seconds!')
