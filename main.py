@@ -33,21 +33,26 @@ print('|============================================|')
 print('| Execution time:', global_elapsed_time, 'seconds |')
 print('|============================================|')
 
-for i, row in records_df.iterrows():
-  print(get_debt(row['Código Municipal']))
-  debt_status = get_debt(row['Código Municipal'])
+def process_all():
+  for i, row in records_df.iterrows():
+    print(get_debt(row['Código Municipal']))
+    debt_status = get_debt(row['Código Municipal'])
 
-  if debt_status['status'] == constants.ERROR:
-    update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', constants.ERROR)
-  else:
-    update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', debt_status['debt'])
-    # get_invoice_copy(row['Código Municipal'], int(debt_status['since']))
+    if debt_status['status'] == constants.ERROR:
+      update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', constants.ERROR)
+    else:
+      update_spread_content(LANDS_SPREADSHEET_NAME, f'C{i + 2}', debt_status['debt'])
+      # get_invoice_copy(row['Código Municipal'], int(debt_status['since']))
 
-  if debt_status['status'] == constants.IN_DEBT:
-    update_spread_content(LANDS_SPREADSHEET_NAME, f'D{i + 2}', debt_status['since'])
-    # get_invoice_copy(row['Código Municipal'], int(debt_status['since']))
+    if debt_status['status'] == constants.IN_DEBT:
+      update_spread_content(LANDS_SPREADSHEET_NAME, f'D{i + 2}', debt_status['since'])
+      # get_invoice_copy(row['Código Municipal'], int(debt_status['since']))
 
-  print('=====================')
+    print('=====================')
+
+# process_all()
 
 # Test with one code if needed
-# print(get_debt(107010))
+print(get_debt(106996))
+print(get_invoice_id(106996, 2021))
+print(request_invoice_copy(106996, 2021, get_invoice_id(106996, 2021)))

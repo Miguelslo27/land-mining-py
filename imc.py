@@ -55,7 +55,7 @@ def get_debt(_id):
     'sCallerURL': '',
   }
 
-  response = request_imc('https://tributos.imcanelones.gub.uy:8443/cows/servlet/hconsultadeudawebcan', data)
+  response = request_imc('post', 'hconsultadeudawebcan', data)
 
   # To test when some error occur
   # with open('examples/error.html', 'w') as f:
@@ -88,7 +88,7 @@ def get_debt(_id):
 
   return land_data
 
-def get_invoice_copy(_id, year):
+def get_invoice_id(_id, year):
   data = {
     '_EventName': 'E\'BUSCARCOBROS\'.',
     '_EventGridId': '24',
@@ -103,22 +103,63 @@ def get_invoice_copy(_id, year):
     '_TODAY': '2022-09-28',
   }
 
-  response = request_imc('https://tributos.imcanelones.gub.uy:8443/cows/servlet/himprimirduplicadoperiodo', data)
+  response = request_imc('post', 'himprimirduplicadoperiodo', data)
+
+  obj = PyQuery(response.text)
+  invoice_id = obj('span#span__COBNRO_0001').text()
 
   # To test when some error occur
   # file_path = f'examples/invoices/copy_{_id}_{year}.html'
   # with open(file_path, 'w') as f:
   #   f.write(response.text)
 
-  # obj = PyQuery(response.text)
-  # message = obj('input[name=GXimg_IMPRIMIR_0001]').text()
-  match = re.search(r'href=[\'"]?([^\'" >]+)', response.text)
+  return invoice_id
 
-  if match:
-    print('match link', match.group(1))
-  # print('invoice_copy', obj('table#GRILLACOBROS').html())
+def request_invoice_copy(_id, year, invoice_id):
+  data = {
+    '_EventName': 'E\'VERCOBRO\'.0001',
+    '_EventGridId': '',
+    '_EventRowId': '',
+    '_IDPADRON': _id,
+    '_BUSCAR': 'S',
+    '_ANIO': year,
+    '_MENSAJERETORNO': '',
+    'GXimg_IMPRIMIR_0001': 'bigfolder.gif',
+    '_COBNRO_0001': invoice_id,
+    '_FECHA_0001': '05/02/2021',
+    '_IMPORTE_0001': '2650,00',
+    'GXimg_IMPRIMIR_0002': 'bigfolder.gif',
+    '_COBNRO_0002': '508924171',
+    '_FECHA_0002': '09/04/2021',
+    '_IMPORTE_0002': '2101,00',
+    'GXimg_IMPRIMIR_0003': 'bigfolder.gif',
+    '_COBNRO_0003': '508995783',
+    '_FECHA_0003': '14/06/2021',
+    '_IMPORTE_0003': '2101,00',
+    'GXimg_IMPRIMIR_0004': 'bigfolder.gif',
+    '_COBNRO_0004': '509204456',
+    '_FECHA_0004': '14/08/2021',
+    '_IMPORTE_0004': '2182,00',
+    'GXimg_IMPRIMIR_0005': 'bigfolder.gif',
+    '_COBNRO_0005': '509296678',
+    '_FECHA_0005': '18/10/2021',
+    '_IMPORTE_0005': '2182,00',
+    'GXimg_IMPRIMIR_0006': 'bigfolder.gif',
+    '_COBNRO_0006': '509374168',
+    '_FECHA_0006': '11/12/2021',
+    '_IMPORTE_0006': '2182,00',
+    'nRC_Grillacobros': '6',
+    'sCallerURL': '',
+    '_TODAY': '2022-09-30',
+  }
 
-def request_imc(url, data):
+  response = request_imc('post', 'himprimirduplicadoperiodo', data)
+  
+
+def request_imc(method, path, data):
+  imc_url = 'https://tributos.imcanelones.gub.uy:8443/cows/servlet/'
+  url = imc_url + path
+  
   cookies = {
     'GX_SESSION_ID': 'yc3pgQrDDoqd0skF0%2B8F%2FrvpZZ4cKCYBwIQom7rRGrM%3D',
     'JSESSIONID': '5D3F3E6F9D29ED953451CECBE1474BF5',
@@ -134,7 +175,7 @@ def request_imc(url, data):
     # Requests sorts cookies= alphabetically
     # 'Cookie': 'GX_SESSION_ID=yc3pgQrDDoqd0skF0%2B8F%2FrvpZZ4cKCYBwIQom7rRGrM%3D; JSESSIONID=5D3F3E6F9D29ED953451CECBE1474BF5; _fbp=fb.2.1663724475802.786148759; _ga=GA1.3.1227441019.1663724478',
     'Origin': 'https://tributos.imcanelones.gub.uy:8443',
-    'Referer': 'https://tributos.imcanelones.gub.uy:8443/cows/servlet/hconsultadeudawebcan',
+    'Referer': url,
     'Sec-Fetch-Dest': 'document',
     'Sec-Fetch-Mode': 'navigate',
     'Sec-Fetch-Site': 'same-origin',
@@ -146,4 +187,8 @@ def request_imc(url, data):
     'sec-ch-ua-platform': '"macOS"',
   }
 
-  return requests.post(url, cookies=cookies, headers=headers, data=data, verify=False)
+  if method == 'post':
+    return requests.post(url, cookies=cookies, headers=headers, data=data, verify=False)
+  else:
+    return requests.post(url, cookies=cookies, headers=headers, data=data, verify=False)
+
