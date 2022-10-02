@@ -30,6 +30,6 @@ MVP - v0.1
   - [CHECK] continue from where it left
 
 # New features - v0.3
-- [...] Fix invoice data for other locations, is getting empty
-- Get owner's land
+- [CHECK] Fix invoice data for other locations, is getting empty
+- [...] Get owner's land
 - Update the spreadhsheet with the data
