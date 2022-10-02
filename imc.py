@@ -173,7 +173,7 @@ def request_invoice_copy(_id, year, invoice_id):
       fileReader = PyPDF2.PdfFileReader(file)
       # Read the invoice
       page = fileReader.pages[0]
-      match = re.findall(r'Loc. Catastral:([^Nro.]*)Nro. Padrón:([\d]*) Manzana:([\d]*) Solar:([\d]*)', page.extract_text())
+      match = re.findall(r'Loc. Catastral:(.*)Nro. Padrón:(\d*) Manzana:(\d*) Solar:(\d*)', page.extract_text())
 
       return match;
     except:
