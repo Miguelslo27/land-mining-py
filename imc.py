@@ -175,7 +175,7 @@ def request_invoice_copy(_id, year, invoice_id):
       # Read the invoice
       page = fileReader.pages[0]
       matches += re.findall(r'Loc. Catastral:(.*)Nro. Padrón:(\d*) Manzana:(\d*) Solar:(\d*)', page.extract_text())
-      matches += re.find(r'Propietario:(.*)', page.extract_text())
+      matches += re.findall(r'Propietario:(.*)', page.extract_text())
     except:
       pass
 
