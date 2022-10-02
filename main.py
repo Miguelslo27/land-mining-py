@@ -41,6 +41,8 @@ def get_invoice_data(_id, year):
   print('<<<<<<<<<<<<<<<<<<<<<<<<<')
   invoice_data = request_invoice_copy(_id, year, get_invoice_id(_id, year))
 
+  print(len(invoice_data))
+
   if len(invoice_data) == 0 and int(year) - 1 >= 1998:
     invoice_data = get_invoice_data(_id, year - 1)
 
