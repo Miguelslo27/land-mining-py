@@ -83,6 +83,7 @@ def process_all():
         update_spread_content(LANDS_SPREADSHEET_NAME, f'E{i + 2}', invoice_data[0][1])
         update_spread_content(LANDS_SPREADSHEET_NAME, f'F{i + 2}', invoice_data[0][2])
         update_spread_content(LANDS_SPREADSHEET_NAME, f'G{i + 2}', invoice_data[0][3])
+        update_spread_content(LANDS_SPREADSHEET_NAME, f'H{i + 2}', invoice_data[1])
     except:
       print('∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆')
       print(sys.exc_info()[0])
