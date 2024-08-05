@@ -76,6 +76,9 @@ def get_spread_content(spname):
     return spreadsheet_content
 
 def update_spread_content(spname, cell, value):
+  print('---> SPNAME', spname);
+  print('---> CELL', cell);
+  print('---> VALUE', value);
   get_spreadsheet(spname).update(cell, value)
 
 def strip_accents(text):

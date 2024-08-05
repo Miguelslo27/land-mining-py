@@ -1,8 +1,11 @@
+import os
 import re
-import PyPDF2
 import requests
 import constants
 import urllib3
+import traceback
+from PyPDF2 import PdfReader
+from datetime import datetime
 
 from pyquery import PyQuery
 
@@ -72,6 +75,7 @@ def get_debt(_id):
   debt_since = obj('span#span__SANIO_0001').text()
 
   land_data = dict();
+  ACTUAL_YEAR = datetime.now().year
 
   if message == constants.NOT_FOUND_MSG:
     land_data['status'] = constants.NOT_FOUND
@@ -79,7 +83,7 @@ def get_debt(_id):
     land_data['debt'] = 0
   elif message == constants.NO_DEBT_MSG:
     land_data['status'] = constants.NO_DEBT
-    land_data['since'] = 2022
+    land_data['since'] = ACTUAL_YEAR
     land_data['debt'] = 0
   elif debt > 0:
     land_data['status'] = constants.IN_DEBT
@@ -160,27 +164,64 @@ def request_invoice_copy(_id, year, invoice_id):
   response = request_imc('post', 'himprimirduplicadoperiodo', data)
   match = re.findall(r'href=["]?javascript:miVentana_Encript\(([^" >]+)["]?', response.text)
 
-  # Test
-
   if len(match) > 0:
     download_invoice_url = match[0].split(',')[0].replace('\'', '')
 
     # Get the invoice
     response = request_imc('get', download_invoice_url)
+    
     # Save the invoice to PDF
     file_path = f'pdfs/copy_{_id}_{year}_{invoice_id}.pdf'
+    
     open(file_path, 'wb').write(response.content)
 
     try:
       # Open the invoice
       file = open(file_path, 'rb')
-      fileReader = PyPDF2.PdfFileReader(file)
+
+      fileReader = PdfReader(file)
+
+      # #################################################
+      # DEBUGGING #######################################
+      # #################################################
+      print('fileReader', fileReader)
+      # ^^^
+      
       # Read the invoice
       page = fileReader.pages[0]
-      match = re.findall(r'Loc. Catastral:([^Nro.]*)Nro. Padrón:([\d]*) Manzana:([\d]*) Solar:([\d]*)', page.extract_text())
+
+      # #################################################
+      # DEBUGGING #######################################
+      # #################################################
+      print('fileReader.pages', fileReader.pages)
+      print('page', page)
+      print('page text', page.extract_text())
+      # ^^^
+      
+      match = re.findall(r'Loc\. Catastral:(.*?)Nro\. Padrón:(\d*) Manzana:(\d*) Solar:(\d*)', page.extract_text())
+
+      # #################################################
+      # DEBUGGING #######################################
+      # #################################################
+      print('match', match)
+      # ^^^
+
+      file.close()
+      os.remove(file_path)
 
       return match;
     except:
+      # #################################################
+      # TRACE THE ERROR #################################
+      # #################################################
+      print('An exception occurred: ', traceback.format_exc())
+
+      if not file.closed:
+        file.close()
+
+      if os.path.exists(file_path):
+        os.remove(file_path)
+      
       return []
 
   return []
