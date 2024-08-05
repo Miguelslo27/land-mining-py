@@ -30,10 +30,6 @@ MVP - v0.1
   - [CHECK] continue from where it left
 
 # New features - v0.3
-<<<<<<< Updated upstream
-- Get owner's land
-- Update the spreadhsheet with the data
-=======
 - [CHECK] Fix invoice data for other locations, is getting empty
 - [CHECK] Get owner's land
 - [CHECK] Update the spreadhsheet with the data
@@ -41,4 +37,3 @@ MVP - v0.1
 # New features - v0.4
 - [...] Fix bug with getting invoice backward, it isn't working correctly
 - Add the ability to process range of land ids
->>>>>>> Stashed changes

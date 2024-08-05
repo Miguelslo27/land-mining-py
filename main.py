@@ -57,8 +57,8 @@ def process_all():
     if int(row['Código Municipal']) <= last_id:
       continue
     
-    print(get_debt(row['Código Municipal']))
     debt_status = get_debt(row['Código Municipal'])
+    print(debt_status)
 
     try:
       if debt_status['status'] == constants.ERROR:
@@ -85,6 +85,7 @@ def process_all():
         update_spread_content(LANDS_SPREADSHEET_NAME, f'E{i + 2}', invoice_data[0][1])
         update_spread_content(LANDS_SPREADSHEET_NAME, f'F{i + 2}', invoice_data[0][2])
         update_spread_content(LANDS_SPREADSHEET_NAME, f'G{i + 2}', invoice_data[0][3])
+        update_spread_content(LANDS_SPREADSHEET_NAME, f'H{i + 2}', invoice_data[1])
     except:
       print('∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆∆')
       print(sys.exc_info()[0])
@@ -104,9 +105,9 @@ process_all()
 # Test with one code if needed
 # print('========================================================================')
 # print('========================================================================')
-# print('DEBT', get_debt(107000))
-# print('INVOICE ID', get_invoice_id(107000, 2022))
-# print('INVOICE COPY', get_invoice_data(107000, 2022))
+# print('DEBT', get_debt(106083))
+# print('INVOICE ID', get_invoice_id(106083, 2022))
+# print('INVOICE COPY', get_invoice_data(106083, 2022))
 # print('========================================================================')
 # print('========================================================================')
 # print(request_invoice_copy(106999, 2021, get_invoice_id(106999, 2021))[0][0])

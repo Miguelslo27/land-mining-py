@@ -171,19 +171,19 @@ def request_invoice_copy(_id, year, invoice_id):
     file_path = f'pdfs/copy_{_id}_{year}_{invoice_id}.pdf'
     open(file_path, 'wb').write(response.content)
 
+    matches = []
     try:
       # Open the invoice
       file = open(file_path, 'rb')
       fileReader = PyPDF2.PdfFileReader(file)
       # Read the invoice
       page = fileReader.pages[0]
-      match = re.findall(r'Loc. Catastral:([^Nro.]*)Nro. Padrón:([\d]*) Manzana:([\d]*) Solar:([\d]*)', page.extract_text())
-
-      return match;
+      matches += re.findall(r'Loc. Catastral:(.*)Nro. Padrón:(\d*) Manzana:(\d*) Solar:(\d*)', page.extract_text())
+      matches += re.findall(r'Propietario:(.*)', page.extract_text())
     except:
-      return []
+      pass
 
-  return []
+  return matches
 
 def request_imc(method, path, data={}):
   imc_url = 'https://tributos.imcanelones.gub.uy:8443/cows/servlet/'
