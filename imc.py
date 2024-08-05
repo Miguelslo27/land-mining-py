@@ -2,6 +2,8 @@ import re
 import PyPDF2
 import requests
 import constants
+import urllib3
+
 from pyquery import PyQuery
 
 # curl 'https://tributos.imcanelones.gub.uy:8443/cows/servlet/hconsultadeudawebcan' \
@@ -24,6 +26,8 @@ from pyquery import PyQuery
 #   -H 'sec-ch-ua-platform: "macOS"' \
 #   --data-raw '_EventName=E%27CONSULTA+DE+DEUDA%27.&_EventGridId=20&_EventRowId=1&_IDPADRON=1&BUTTON1=Buscar&_SANIO_0001=&_VTO_0001=&_CODIGOCONCEPTO_0001=&_CONCEPTO_0001=SUBTOTAL&_CUOTA_0001=&_IMPORTE_0001=0.00&_LINEA_0001=0&_MENSAJERETORNO=Padr%C3%B3n+inexistente&_MONTOFINAL_0001=0%2C00&_AUXILIARCOBRO=0&_VALPAR=&_NUMEROPREFACTURA=0&_NROPARAMETRO=0&_TIPOBUSQUEDA=0&_CODIGORETORNO=001&_PADRON=&nRC_Grilladeuda=1&nRC_Grilladetalle=0&nRC_Grillapago=0&nRC_Grillatotal=1&sCallerURL=' \
 #   --compressed
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def get_debt(_id):
   data = {
