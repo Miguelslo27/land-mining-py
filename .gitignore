@@ -3,3 +3,6 @@ __pycache__
 pdfs
 cache
 venv
+
+last_land_id.txt
+row_index_id.txt

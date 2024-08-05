@@ -175,6 +175,7 @@ def request_invoice_copy(_id, year, invoice_id):
     
     open(file_path, 'wb').write(response.content)
 
+    matches = []
     try:
       # Open the invoice
       file = open(file_path, 'rb')
@@ -224,7 +225,7 @@ def request_invoice_copy(_id, year, invoice_id):
       
       return []
 
-  return []
+  return matches
 
 def request_imc(method, path, data={}):
   imc_url = 'https://tributos.imcanelones.gub.uy:8443/cows/servlet/'
